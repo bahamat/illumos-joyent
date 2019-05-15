@@ -379,6 +379,10 @@ static struct blacklist {
 
 	/* Western Digital External HDD */
 	{MS_WD_VID, MS_WD_PID, 0,
+	    SCSA2USB_ATTRS_INQUIRY_EVPD},
+
+	/* QNAP TR-004 */
+	{MS_QNAP_VID, MS_QNAP_TR_004_PID, 0,
 	    SCSA2USB_ATTRS_INQUIRY_EVPD}
 };
 
