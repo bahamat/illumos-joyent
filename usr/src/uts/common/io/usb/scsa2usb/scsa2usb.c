@@ -1772,6 +1772,15 @@ scsa2usb_validate_attrs(scsa2usb_state_t *scsa2usbp)
 		}
 		scsa2usbp->scsa2usb_cmd_protocol |= SCSA2USB_UFI_CMDSET;
 	}
+	/*
+	 * QNAP TR-004 reports the enclosure SN for all disks.
+	 * This causes zfs to assign the same devid for all disks, confusing
+	 * libdiskmgt. A Let's try clearing it.
+	 */
+	if ((desc->idVendor == MS_QNAP_VID) &&
+	    (desc->idProduct == MS_QNAP_TR_004_PID)) {
+		scsa2usbp->scsa2usb_dev_data->dev_serial = 0x0;
+	}
 
 	if (scsa2usbp->scsa2usb_attrs != SCSA2USB_ALL_ATTRS) {
 		USB_DPRINTF_L2(DPRINT_MASK_SCSA,
