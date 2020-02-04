@@ -49,7 +49,7 @@ extern "C" {
 #define	optional_argument	2
 
 struct option {
-	char *name;	/* name of long option */
+	const char *name;	/* name of long option */
 	int has_arg;	/* whether option takes an argument */
 	int *flag;	/* if not NULL, set *flag to val when option found */
 	int val;	/* if flag is not NULL, value to set *flag to. */
