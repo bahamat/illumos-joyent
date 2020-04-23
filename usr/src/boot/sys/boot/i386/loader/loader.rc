@@ -8,6 +8,10 @@ include /boot/forth/loader.4th
 set tem.fg_color=white
 set tem.bg_color=black
 
+\ For SmartOS, explicitly set a smallish framebuffer to avoid some early boot
+\ buffer bugs while this gets sorted out.
+framebuffer set 1024x768
+
 try-include /boot/loader.rc.local
 
 \ Reads and processes loader.conf variables
